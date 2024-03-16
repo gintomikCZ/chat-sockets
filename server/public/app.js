@@ -1,4 +1,4 @@
-const socket = io('ws://localhost:3500')
+const socket = io('https:///chat-sockets-fmad.onrender.com')
 
 const activity = document.querySelector('.activity')
 const msgInput = document.querySelector('#message')
@@ -21,7 +21,7 @@ function sendMessage (e) {
   msgInput.focus()
 }
 
-function enterRoom(e) {
+function enterRoom (e) {
   e.preventDefault()
   if (nameInput.value && chatRoom.value) {
     socket.emit('enterRoom', {
@@ -79,7 +79,7 @@ socket.on('roomList', ({ rooms }) => {
   showRooms(rooms)
 })
 
-function showUsers(users) {
+function showUsers (users) {
   usersList.textContent = ''
   if (users) {
     usersList.innerHTML = `<em>Users in ${chatRoom.value}:</em>`
